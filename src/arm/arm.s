@@ -4,7 +4,7 @@
 seed:       .word 0x43 		// la semilla
 selected_bits: .word 3,4,5,7// los bits seleccionados para el LFSR
 size:       .word 16		// el tamano de selected_bits por 4
-steps:      .word 400      	// numero de numeros pseudoaleatorios a generar por 4
+steps:      .word 40      	// numero de numeros pseudoaleatorios a generar por 4
 max_bits:   .word 8  		// numero de bits en el LFSR
 memory_address: .word 0x100	// numero de memoria para guardar los numeros pseudoaltearios
 
