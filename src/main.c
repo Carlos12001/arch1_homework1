@@ -70,7 +70,8 @@ _for_memory_saver:
     goto _end_for_memory_saver;  // Reviso si termino de iterar
   temp1 = memory_address;
   *(temp1 + memory_counter) = _register;
-  xor_result = 0;  // reinicia el xor
+  xor_result = 0;   // reinicia el xor
+  bit_counter = 0;  // re reinicia el bit_counter
 // Se encarga de obtener el nuevo bit MSB
 _for_xor_lfsr:
   temp2 = size;
@@ -102,7 +103,6 @@ _end_for_xor_lfsr:
   _register = _register & _mask;  // se pone una mascara de max_bits
 
   memory_counter++;
-  bit_counter = 0;  // re reinicia el contador
   goto _for_memory_saver;
 
 _end_for_memory_saver:
