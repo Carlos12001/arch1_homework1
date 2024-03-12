@@ -41,20 +41,25 @@ const int steps = 100;
 const int max_bits = 8;
 
 int main() {
+  // Variables temporales
   int* temp1 = selected_bits;  // variable para cargar constantes
   int temp2 = 0;               // variable para hacer calculos
   int temp3 = 0;               // variable para hacer calculos
 
+  // Variables guardadas para el for_memory_saver
   temp2 = max_bits;
-  int bit_counter = 0;     // se guarda porque se usa mas adelante
-  int _mask = 1 << temp2;  // se guarda porque se usa mas adelante
-  _mask = _mask - 1;
+  int _mask = 1 << temp2;
+  _mask = _mask - 1;       // se guarda
+  int memory_counter = 0;  // se guarda
+
+  // Variables guardadas para el for_xor_lfsr
+  int xor_result = 0;   // se guarda
+  int bit_counter = 0;  // se guarda
+
   temp2 = seed;
-  int _register = temp2 & _mask;  // se pone una mascara de max_bits
-  int xor_result = 0;             // se guarda porque se usa mas adelante
+  int _register = temp2 & _mask;  // se asegura que la semilla este en max_bits
 
   temp2 = steps;
-  int memory_counter = 0;  // se guarda porque se usa mas adelante
   int* memory_address = (int*)malloc(
       sizeof(int) *
       temp2);  // esto es una constante por lo iria arriba esto es el 0x100
