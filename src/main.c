@@ -64,18 +64,18 @@ int main() {
       sizeof(int) *
       temp2);  // esto es una constante por lo iria arriba esto es el 0x100
 
-for_memory_saver:
+_for_memory_saver:
   temp2 = steps;
   if (memory_counter == temp2)
-    goto end_for_memory_saver;  // Reviso si termino de iterar
+    goto _end_for_memory_saver;  // Reviso si termino de iterar
   temp1 = memory_address;
   *(temp1 + memory_counter) = _register;
   xor_result = 0;  // reinicia el xor
 // Se encarga de obtener el nuevo bit MSB
-for_xor_lfsr:
-  temp2 = steps;
-  if (bit_counter == size)
-    goto end_for_xor_lfsr;  // Reviso si termino de iterar
+_for_xor_lfsr:
+  temp2 = size;
+  if (bit_counter == temp2)
+    goto _end_for_xor_lfsr;  // Reviso si termino de iterar
   temp1 = selected_bits;
   temp2 = *(temp1 + bit_counter);  // Obtengo la posicion del selected_bits
 
@@ -87,9 +87,9 @@ for_xor_lfsr:
   temp2 = temp3 & 1;                // Hace el bit obtenido se encuentre en LSB
   xor_result = xor_result ^ temp2;  // Hace el xor del anterior
   bit_counter++;
-  goto for_xor_lfsr;
+  goto _for_xor_lfsr;
 
-end_for_xor_lfsr:
+_end_for_xor_lfsr:
   temp2 = _register >> 1;
   _register = temp2;  // hago espacio en el MSB para el nuevo bit
 
@@ -103,9 +103,9 @@ end_for_xor_lfsr:
 
   memory_counter++;
   bit_counter = 0;  // re reinicia el contador
-  goto for_memory_saver;
+  goto _for_memory_saver;
 
-end_for_memory_saver:
+_end_for_memory_saver:
   // Finish the program
   print_memory(memory_address, steps, max_bits);
   return 0;
