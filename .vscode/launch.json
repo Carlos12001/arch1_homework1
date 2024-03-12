@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug LFSR",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/lfsr",
+      "cwd": "${workspaceFolder}",
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "preLaunchTask": "Build with Ninja"
+    }
+  ]
+}

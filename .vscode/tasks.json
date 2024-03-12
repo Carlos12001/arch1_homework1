@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Configure with Meson",
+      "type": "shell",
+      "command": "meson setup build",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build with Ninja",
+      "type": "shell",
+      "command": "ninja -C build",
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "dependsOn": "Configure with Meson"
+    }
+  ]
+}
