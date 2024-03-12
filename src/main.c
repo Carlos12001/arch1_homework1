@@ -35,7 +35,7 @@ int selected_bits[] = {7, 5, 4, 3};
 const int size = sizeof(selected_bits) / sizeof(int);
 
 // Num of generate pseudorandom numbers
-const int steps = 5;
+const int steps = 100;
 
 // Num of bits in the LFSR
 const int max_bits = 8;
@@ -66,23 +66,6 @@ for_memory_saver:
   temp1 = memory_address;
   *(temp1 + memory_counter) = _register;
   xor_result = 0;  // reinicia el xor
-  goto for_xor_lfsr;
-end_for_xor_lfsr:
-  temp2 = _register >> 1;
-  _register = temp2;  // hago espacio en el MSB para el nuevo bit
-
-  temp2 = max_bits;
-  temp2 = temp2 - 1;            // obtengo maximo menos 1
-  temp3 = xor_result << temp2;  // al bit calculado que se mueva al MSB
-
-  _register = _register | temp3;  // agrego el nuevo bit en registro
-
-  _register = _register & _mask;  // se pone una mascara de max_bits
-
-  memory_counter++;
-  bit_counter = 0;  // re reinicia el contador
-  goto for_memory_saver;
-
 // Se encarga de obtener el nuevo bit MSB
 for_xor_lfsr:
   temp2 = steps;
@@ -100,6 +83,22 @@ for_xor_lfsr:
   xor_result = xor_result ^ temp2;  // Hace el xor del anterior
   bit_counter++;
   goto for_xor_lfsr;
+
+end_for_xor_lfsr:
+  temp2 = _register >> 1;
+  _register = temp2;  // hago espacio en el MSB para el nuevo bit
+
+  temp2 = max_bits;
+  temp2 = temp2 - 1;            // obtengo maximo menos 1
+  temp3 = xor_result << temp2;  // al bit calculado que se mueva al MSB
+
+  _register = _register | temp3;  // agrego el nuevo bit en registro
+
+  _register = _register & _mask;  // se pone una mascara de max_bits
+
+  memory_counter++;
+  bit_counter = 0;  // re reinicia el contador
+  goto for_memory_saver;
 
 end_for_memory_saver:
   // Finish the program
