@@ -1,1 +1,9 @@
 build/*
+arm.o
+arm
+riscv.o
+riscv
+x86.o
+x86
+
+
