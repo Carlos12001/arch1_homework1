@@ -5,5 +5,9 @@
   },
   "mesonbuild.configureOnOpen": true,
   "C_Cpp.default.compileCommands": "/home/carlos/Repos/arch1_homework1/builddir/compile_commands.json",
-  "C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild"
+  "C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild",
+  "cSpell.words": [
+    "numeros",
+    "tamano"
+  ]
 }
