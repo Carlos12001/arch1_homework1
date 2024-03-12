@@ -31,7 +31,7 @@ void print_memory(int* numbers, int count, int bits) {
 const int seed = 0x43;
 
 // The power of the LFSR
-int selected_bits[] = {7, 5, 4, 3};
+int selected_bits[] = {3, 4, 5, 7};
 const int size = sizeof(selected_bits) / sizeof(int);
 
 // Num of generate pseudorandom numbers
