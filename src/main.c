@@ -49,15 +49,15 @@ int main() {
   // Variables guardadas para el for_memory_saver
   temp2 = max_bits;
   int _mask = 1 << temp2;
-  _mask = _mask - 1;       // se guarda
+  _mask = _mask - 1;  // se guarda
+  temp2 = seed;
+  int _register =
+      temp2 & _mask;  // se guarda y asegura que la semilla este en max_bits
   int memory_counter = 0;  // se guarda
 
   // Variables guardadas para el for_xor_lfsr
   int xor_result = 0;   // se guarda
   int bit_counter = 0;  // se guarda
-
-  temp2 = seed;
-  int _register = temp2 & _mask;  // se asegura que la semilla este en max_bits
 
   temp2 = steps;
   int* memory_address = (int*)malloc(
