@@ -1,2 +1,7 @@
 build/*
-
+src/arm/arm
+src/arm/arm.o
+src/riscv/riscv
+src/riscv/riscv.o
+src/x86/x86.o
+src/x86/x86
