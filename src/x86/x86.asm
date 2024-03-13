@@ -9,11 +9,19 @@ section .text
 global _start
 
 _start:
-  mov rax, 3
-  mov rbx, 7
-_presuma:
-  add rax, rbx
-_suma:
-  mov rax, 60
-  mov rdi, 0
+  ;; iniciar variables temporales
+  mov eax, 0 ;; variable temporal para cargar datos
+  mov ebx, 0 ;; variable temporal para calculos
+  mov ecx, 0 ;; variable temporal para calculos
+
+  ;; preparar la mascara
+  mov eax, [max_bits] ;; Load max_bits into eax
+  mov cl, al          ;; Move al (lower 8 bits of eax) into cl for shift count
+  mov ecx, 1
+  shl ecx, cl         ;; Shift left 1 by the number of bits in cl
+  dec ecx             ;; Subtract 1 from ecx to get the mask
+  mov r11d, ecx       ;; Store the mask in r11d (32-bit part of r11)
+  mov r12, 0x63 ;;  r13 es el register LFSR
+  mov r13, 0 ;; r13 es el memory_counter
+_end_for_memory_saver:
   syscall
