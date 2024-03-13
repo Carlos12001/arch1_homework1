@@ -1,9 +1,11 @@
 build/*
 arm.o
 arm
+arm.txt
 riscv.o
 riscv
+riscv.txt
 x86.o
 x86
-
+x86.txt
 
