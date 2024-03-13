@@ -75,6 +75,6 @@ _end_for_xor_lfsr:
   j _for_memory_saver ## siguiente iteracion
    
 _end_for_memory_saver:
-  li a7, 93          ## carga el numero de la llamada al sistema para exit en a7
   li a0, 0           ## carga el codigo de salida en a0, 0 indica exito
+  li a7, 93          ## carga el numero de la llamada al sistema para exit en a7
   ecall              ## ejecuta la llamada al sistema
