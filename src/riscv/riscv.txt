@@ -1,0 +1,61 @@
+
+riscv:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00010094 <_start>:
+   10094:	4281                	li	t0,0
+   10096:	4301                	li	t1,0
+   10098:	4381                	li	t2,0
+   1009a:	81c1a283          	lw	t0,-2020(gp) # 1113c <max_bits>
+   1009e:	4305                	li	t1,1
+   100a0:	00531433          	sll	s0,t1,t0
+   100a4:	147d                	addi	s0,s0,-1
+   100a6:	00001297          	auipc	t0,0x1
+   100aa:	07a2a283          	lw	t0,122(t0) # 11120 <__DATA_BEGIN__>
+   100ae:	8496                	mv	s1,t0
+   100b0:	8ce1                	and	s1,s1,s0
+   100b2:	4901                	li	s2,0
+
+000100b4 <_for_memory_saver>:
+   100b4:	8181a283          	lw	t0,-2024(gp) # 11138 <steps>
+   100b8:	05228f63          	beq	t0,s2,10116 <_end_for_memory_saver>
+   100bc:	10992023          	sw	s1,256(s2)
+   100c0:	4981                	li	s3,0
+   100c2:	4a01                	li	s4,0
+
+000100c4 <_for_xor_lfsr>:
+   100c4:	8141a283          	lw	t0,-2028(gp) # 11134 <size>
+   100c8:	03428763          	beq	t0,s4,100f6 <_end_for_xor_lfsr>
+   100cc:	8041a283          	lw	t0,-2044(gp) # 11124 <selected_bits>
+   100d0:	80418293          	addi	t0,gp,-2044 # 11124 <selected_bits>
+   100d4:	92d2                	add	t0,t0,s4
+   100d6:	0002a303          	lw	t1,0(t0)
+   100da:	81c1a283          	lw	t0,-2020(gp) # 1113c <max_bits>
+   100de:	8396                	mv	t2,t0
+   100e0:	406383b3          	sub	t2,t2,t1
+   100e4:	13fd                	addi	t2,t2,-1
+   100e6:	0074d333          	srl	t1,s1,t2
+   100ea:	00137313          	andi	t1,t1,1
+   100ee:	0069c9b3          	xor	s3,s3,t1
+   100f2:	0a11                	addi	s4,s4,4
+   100f4:	bfc1                	j	100c4 <_for_xor_lfsr>
+
+000100f6 <_end_for_xor_lfsr>:
+   100f6:	4385                	li	t2,1
+   100f8:	0074d333          	srl	t1,s1,t2
+   100fc:	849a                	mv	s1,t1
+   100fe:	81c1a283          	lw	t0,-2020(gp) # 1113c <max_bits>
+   10102:	fff28313          	addi	t1,t0,-1
+   10106:	006993b3          	sll	t2,s3,t1
+   1010a:	899e                	mv	s3,t2
+   1010c:	0134e4b3          	or	s1,s1,s3
+   10110:	8ce1                	and	s1,s1,s0
+   10112:	0911                	addi	s2,s2,4
+   10114:	b745                	j	100b4 <_for_memory_saver>
+
+00010116 <_end_for_memory_saver>:
+   10116:	4501                	li	a0,0
+   10118:	05d00893          	li	a7,93
+   1011c:	00000073          	ecall
