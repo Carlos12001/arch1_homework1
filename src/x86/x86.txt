@@ -1,0 +1,21 @@
+
+x86.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+   0:	b8 00 00 00 00       	mov    eax,0x0
+   5:	bb 00 00 00 00       	mov    ebx,0x0
+   a:	b9 00 00 00 00       	mov    ecx,0x0
+   f:	8b 04 25 00 00 00 00 	mov    eax,DWORD PTR ds:0x0
+  16:	88 c1                	mov    cl,al
+  18:	b9 01 00 00 00       	mov    ecx,0x1
+  1d:	d3 e1                	shl    ecx,cl
+  1f:	ff c9                	dec    ecx
+  21:	41 89 cb             	mov    r11d,ecx
+  24:	41 bc 63 00 00 00    	mov    r12d,0x63
+  2a:	41 bd 00 00 00 00    	mov    r13d,0x0
+
+0000000000000030 <_end_for_memory_saver>:
+  30:	0f 05                	syscall 
